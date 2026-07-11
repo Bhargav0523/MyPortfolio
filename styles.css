@@ -124,14 +124,14 @@ input:focus { outline: none; border-color: #1DB954 !important; }
   z-index: -1;
 }
 .hero-photo-ring {
-  width: 172px;
-  height: 172px;
+  width: clamp(220px, 30vw, 300px);
+  height: clamp(220px, 30vw, 300px);
   border-radius: 50%;
-  padding: 5px;
+  padding: 6px;
   background: linear-gradient(135deg, #1DB954, #0d5f2c);
-  box-shadow: 0 0 44px rgba(29,185,84,.35);
+  box-shadow: 0 0 54px rgba(29,185,84,.4);
   animation: floaty 6s ease-in-out infinite;
-  margin-bottom: 34px;
+  margin-bottom: 38px;
 }
 .hero-photo-frame {
   width: 100%;
