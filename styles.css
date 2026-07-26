@@ -39,15 +39,25 @@ input:focus { outline: none; border-color: #1DB954 !important; }
   z-index: 1;
 }
 
-/* ===== Reveal ===== */
+/* ===== Reveal on scroll ===== */
+/* Uses a keyframe animation (not a transition) so it never fights an
+   element's own hover transition. `backwards` fill holds the hidden start
+   state during the per-element stagger delay, then reverts to the base so
+   hover transforms keep working after the reveal. */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1);
 }
 [data-reveal].is-visible {
   opacity: 1;
-  transform: none;
+  animation: reveal-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms) backwards;
+}
+@keyframes reveal-rise {
+  from { opacity: 0; transform: translateY(38px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; }
+  [data-reveal].is-visible { animation: none; }
 }
 
 /* ===== Nav ===== */

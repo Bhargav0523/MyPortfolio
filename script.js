@@ -4,6 +4,16 @@
   // ===== Reveal on scroll =====
   function initReveal() {
     const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    // Stagger siblings that share a parent (cards in a grid, timeline items,
+    // skill clusters) so they cascade in instead of popping together.
+    els.forEach((el) => {
+      const parent = el.parentElement;
+      const group = parent
+        ? Array.from(parent.children).filter((c) => c.hasAttribute("data-reveal"))
+        : [el];
+      const idx = Math.max(0, group.indexOf(el));
+      el.style.setProperty("--reveal-delay", Math.min(idx, 7) * 80 + "ms");
+    });
     if (!("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("is-visible"));
       return;
@@ -15,7 +25,7 @@
           io.unobserve(en.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
     els.forEach((el) => io.observe(el));
   }
 
