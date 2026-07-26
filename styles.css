@@ -270,9 +270,9 @@ input:focus { outline: none; border-color: #1DB954 !important; }
 }
 .edu-item {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   margin-bottom: 22px;
-  align-items: flex-start;
+  align-items: center;
 }
 .edu-item-last { margin-bottom: 0; }
 .edu-text { flex: 1; min-width: 0; }
@@ -507,9 +507,17 @@ input:focus { outline: none; border-color: #1DB954 !important; }
   height: 66px;
 }
 .edu-logo {
-  width: 50px;
-  height: 50px;
-  margin-left: auto;
+  width: 56px;
+  height: 56px;
+}
+/* Square brand marks (e.g. the SP Jain SPJ GLOBAL badge) fill the circle
+   edge-to-edge instead of floating with padding, reading as a solid badge. */
+.logo-badge {
+  background: transparent;
+}
+.logo-badge img {
+  object-fit: cover;
+  padding: 0;
 }
 
 /* ===== Projects ===== */
