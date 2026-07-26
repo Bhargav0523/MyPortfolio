@@ -616,6 +616,16 @@ input:focus { outline: none; border-color: #1DB954 !important; }
   font-size: 11px;
   letter-spacing: .1em;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.li-icon {
+  width: 15px;
+  height: 15px;
+  fill: #1DB954;
+  flex: none;
+  display: block;
 }
 .contact-value {
   margin: 0;
